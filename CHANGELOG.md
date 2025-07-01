@@ -1,3 +1,18 @@
+# [1.1.0](https://github.com/pustovitDmytro/hermod/compare/v1.0.1...v1.1.0) (2025-07-01)
+
+
+### Chore
+
+* fixes ssh connection ([784cd4e](https://github.com/pustovitDmytro/hermod/commit/784cd4e1665b1e22ee360f493ce2b62ffc269353))
+
+### Fix
+
+* use global fulltext ignore ([4d8fbb4](https://github.com/pustovitDmytro/hermod/commit/4d8fbb4d28ea9fb447bec5f38d4ff0ee3085be4f))
+
+### New
+
+* adds houses query ([c0b419f](https://github.com/pustovitDmytro/hermod/commit/c0b419f21800fa320642483993c67fe2274b4145))
+
 ## [1.0.1](https://github.com/pustovitDmytro/hermod/compare/v1.0.0...v1.0.1) (2025-07-01)
 
 
