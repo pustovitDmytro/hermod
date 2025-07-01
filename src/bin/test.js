@@ -15,7 +15,7 @@ const doc = `Usage:
 async function testRealEstateRequest() {
     await realEstateRequest({
         data : {
-            ...configs[0],
+            ...configs[1],
             notify : null
         }
     });

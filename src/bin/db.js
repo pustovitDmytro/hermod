@@ -8,7 +8,7 @@ import Watched from '../tables/Watched';
 import { docoptRunner } from './utils';
 
 const doc = `Usage:
-    db.js sync <table>
+    db.js push <table>
     db.js -h | --help
 
     Options:
@@ -27,7 +27,7 @@ async function run(opts) {
     await db.connect();
     console.log('connected');
 
-    if (opts.sync) {
+    if (opts.push) {
         await syncDB(opts['<table>']);
     }
 

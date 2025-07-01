@@ -55,11 +55,17 @@ export default async function (job) {
 
     logger.info(`Ads left after filtering for ${config.id}: ${filteredList.length}`);
 
-    if (config.notify) {
-        await Promise.all(
-            filteredList.map(l => queue.createJob(RUN_NOTIFY, { config: config.notify, payload: l }))
-        );
+    const filteredIds = filteredList.map(l => l.id);
+
+    if (!config.notify) {
+        // console.log(JSON.stringify(filteredList));
+
+        return filteredIds;
     }
+
+    await Promise.all(
+        filteredList.map(l => queue.createJob(RUN_NOTIFY, { config: config.notify, payload: l }))
+    );
 
     const newWatchedList = new Set([ ...list.map(l => l.id), ...alreadyWatchedList ]);
 
@@ -71,5 +77,5 @@ export default async function (job) {
             items         : [ ...newWatchedList ]
         }));
 
-    return filteredList.map(l => l.id);
+    return filteredIds;
 }

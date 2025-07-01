@@ -124,5 +124,111 @@
             "channel": -1002605995351,
             "template": "<b>💰 Ціна:</b> {price}$ ({price_per_meter} $/м²)\n<b>📐 Площа:</b> {total_area} м²\n<b>🧱 Поверх:</b> {floor} із {total_floors}\n<b>🛏 Кімнати:</b> {number_of_rooms}\n<b>🔥 Опалення:</b> {heating}\n<b>🔧 Стан:</b> {repair}\n<b>🏢 ЖК:</b> {apartmentComplex}\n\n<b>📌 Назва:</b>\n{title}\n\n<b>📝 Опис:</b>\n{description}\n\n<a href='{url}'>🔗 Перейти до оголошення</a>"
         }
+    },
+    {
+        "id": "19093d0c-602f-4907-b259-227b36c89678",
+        "parser": "olx",
+        "type": "real_estate",
+        "filters": {
+            "category_id": "206",
+            "region_id": "25",
+            "city_id": ["335", "31425", "32899", "31159", "31147", "364", "265", "31443", "31409", "32983", "32939", "32961", "32961", "517", "33001"],
+            "currency": "USD",
+            "filter_float_price:from": "2000",
+            "filter_float_price:to": "11000"
+        },
+        "attributes": {
+            "id": {
+                "type": "string",
+                "key": "id"
+            },
+            "url": {
+                "type": "string",
+                "key": "url"
+            },
+            "title": {
+                "type": "string",
+                "key": "title"
+            },
+            "description": {
+                "type": "string",
+                "key": "description"
+            },
+            "total_floors": {
+                "type": "number",
+                "key": "params.total_floors.value.label"
+            },
+            "number_of_rooms": {
+                "type": "number",
+                "key": "params.number_of_rooms.value.label"
+            },
+            "property_type": {
+                "type": "string",
+                "key": "params.property_type_houses.value.label"
+            },
+            "land_area": {
+                "type": "number",
+                "key": "params.land_area.value.key"
+            },
+            "total_area": {
+                "type": "number",
+                "key": "params.total_area.value.key"
+            },
+            "price": {
+                "type": "number",
+                "key": "params.price.value.value"
+            },
+            "price_per_house_meter": {
+                "type": "function",
+                "operator": "round",
+                "arguments": [
+                    {
+                        "type": "function",
+                        "operator": "divide",
+                        "arguments": [
+                            {
+                                "type": "dumped_value",
+                                "key": "price"
+                            },
+                            {
+                                "type": "dumped_value",
+                                "key": "total_area"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "price_per_land_meter": {
+                "type": "function",
+                "operator": "round",
+                "arguments": [
+                    {
+                        "type": "function",
+                        "operator": "divide",
+                        "arguments": [
+                            {
+                                "type": "dumped_value",
+                                "key": "price"
+                            },
+                            {
+                                "type": "dumped_value",
+                                "key": "land_area"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "ignore": {
+            "match": [
+                "половину",
+                "частину"
+            ]
+        },
+        "notify": {
+            "type": "telegram",
+            "channel": -1002891755804,
+            "template": "<b>💰 Ціна:</b> {price}$ \n<b>📐 Загальна площа будинку:</b> {total_area} м² \n<b>🏠 Тип власності:</b> {property_type} \n<b>🌳 Площа земельної ділянки:</b> {land_area} соток \n<b>🛏 Кількість кімнат:</b> {number_of_rooms} \n<b>🏢 Поверхів у будинку:</b> {total_floors} \n<b>📌 Назва:</b> \n{title\n<b>📝 Опис:</b> \n{description\n<a href='{url}'>🔗 Перейти до оголошення</a>"
+        }
     }
 ]
