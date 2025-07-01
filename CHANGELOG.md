@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/pustovitDmytro/hermod/compare/v1.0.0...v1.0.1) (2025-07-01)
+
+
+### Fix
+
+* use topologicalSortConfig for sorting attributes in dump ([7a3e974](https://github.com/pustovitDmytro/hermod/commit/7a3e974fb52b48942db0b1b9506bdc31fe38180f))
+
 # 1.0.0 (2025-07-01)
 
 
