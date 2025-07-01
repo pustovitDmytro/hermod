@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  redis:
+    image: redis:7
+    container_name: redis
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+
+  hermod-admin:
+    image: pustovitdmytro/hermod-admin:0.0.1
+    container_name: hermod-admin
+    ports:
+      - "8010:5001"
+    env_file:
+      - ./hermod.env
+    depends_on:
+      - redis
+
+  hermod-worker:
+    image: pustovitdmytro/hermod-worker:0.0.1
+    container_name: hermod-worker
+    env_file:
+      - ./hermod.env
+    depends_on:
+      - redis
+
+volumes:
+  redis_data:

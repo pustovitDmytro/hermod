@@ -1,0 +1,12 @@
+{
+    "dir": "tmp/package-tests",
+    "copy": [
+        [ "tests/init.js",  "tests-init.js" ],
+        [ "tests/test.env", ".env" ],
+        [ ".env.defaults", ".env.defaults" ]
+    ],
+    "legacyNodeVersion":">=10 <20",
+    "supportedNodeVersion":">=20",
+    "copyDefaultFiles": true,
+    "modules": [ "cls-hooked", "fs-extra", "uuid", "winston", "winston-array-transport", "supertest" ]
+}

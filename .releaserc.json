@@ -1,0 +1,73 @@
+{
+    "branches": ["master"],
+    "branch": "master",
+    "ci": false,
+    "plugins": [
+        "@semantic-release/commit-analyzer",
+        "@semantic-release/release-notes-generator",
+        [
+            "@semantic-release/changelog", {
+                "changelogFile": "CHANGELOG.md"
+            }
+        ],
+        [
+            "@google/semantic-release-replace-plugin",
+            {
+              "replacements": [
+                {
+                  "files": ["package.json"],
+                  "from": "\"version\":\\s*\".*\"",
+                  "to": "\"version\": \"${nextRelease.version}\""
+                },
+                {
+                    "files": ["docker/Admin.dockerfile", "docker/Worker.dockerfile"],
+                    "from": "FROM pustovitdmytro/ianus-base:.*",
+                    "to": "FROM pustovitdmytro/ianus-base:${nextRelease.version}"
+                }
+              ]
+            }
+        ],
+        [
+            "@semantic-release/exec", {
+                "verifyConditionsCmd": "./bin/release/verifyConditions.sh",
+                "prepareCmd": "./bin/release/prepare.sh ${nextRelease.version}",
+                "publishCmd": "./bin/release/publish.sh ${nextRelease.version}"
+            }
+        ],
+        [
+            "@semantic-release/git", {
+                "assets": ["README.md", "CHANGELOG.md", "package.json", "docker/*.dockerfile"],
+                "message": "Chore: (release) add version ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+            }
+        ],
+        [
+            "@semantic-release/github", {
+                "assets": [
+                    { "path": "*.tgz", "label": "npm tarball" }
+                ]
+            }
+        ],
+        [ 
+            "semantic-release-telegram", {
+                "chats": [ 238585617 ],
+                "telegra.ph"  : {
+                    "title"   : "{name} v.{version}",
+                    "message" : "<a href='{telegraph_url}'>Release Notes</a>",
+                    "content" : "{release_notes}"
+                }
+            } 
+        ]
+    ],
+    "preset": "eslint",
+    "releaseRules": [
+        { "tag": "Fix", "release": "patch" },
+        { "tag": "Update", "release": "minor" },
+        { "tag": "New", "release": "minor" },
+        { "tag": "Breaking", "release": "major" },
+        { "tag": "Docs", "release": "patch" },
+        { "tag": "Upgrade", "release": "patch" }
+    ],
+    "parserOpts": {
+        "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES"]
+    }
+}

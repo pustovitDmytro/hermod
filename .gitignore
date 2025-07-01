@@ -1,0 +1,12 @@
+node_modules
+etc/*.js
+etc/*.json
+lib/*
+tmp/*
+logs/*
+*.log
+*.tgz
+reports/*
+.coveralls.yml
+.env
+backups/*.json

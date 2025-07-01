@@ -1,0 +1,128 @@
+[
+    {
+        "id": "51863258-5823-44da-9a4f-e1200d2d06cb",
+        "parser": "olx",
+        "type": "real_estate",
+        "filters": {
+            "category_id": "1758",
+            "region_id": "25",
+            "city_id": "268",
+            "currency": "USD",
+            "filter_float_floor:from": "2",
+            "filter_float_price:from": "30000",
+            "filter_float_price:to": "85000",
+            "filter_float_total_area:from": "30",
+            "filter_float_total_floors:from": "6",
+            "query": [
+                "голосіївський проспект",
+                "деміївка",
+                "деміївська",
+                "голосіївська",
+                "демеевка",
+                "демеевская",
+                "голосеевская",
+                "голосієво",
+                "голосеево"
+            ]
+        },
+        "attributes": {
+            "id": {
+                "type": "string",
+                "key": "id"
+            },
+            "url": {
+                "type": "string",
+                "key": "url"
+            },
+            "title": {
+                "type": "string",
+                "key": "title"
+            },
+            "description": {
+                "type": "string",
+                "key": "description"
+            },
+            "apartmentComplex": {
+                "type": "string",
+                "key": "params.zkh.value.label"
+            },
+            "floor": {
+                "type": "string",
+                "key": "params.floor.value.label"
+            },
+            "total_floors": {
+                "type": "string",
+                "key": "params.total_floors.value.label"
+            },
+            "number_of_rooms": {
+                "type": "string",
+                "key": "params.number_of_rooms_string.value.label"
+            },
+            "heating": {
+                "type": "string",
+                "key": "params.heating.value.label"
+            },
+            "repair": {
+                "type": "string",
+                "key": "params.repair.value.label"
+            },
+            "total_area": {
+                "type": "number",
+                "key": "params.total_area.value.key"
+            },
+            "price": {
+                "type": "number",
+                "key": "params.price.value.value"
+            },
+            "price_per_meter": {
+                "type": "function",
+                "operator": "round",
+                "arguments": [
+                    {
+                        "type": "function",
+                        "operator": "divide",
+                        "arguments": [
+                            {
+                                "type": "dumped_value",
+                                "key": "price"
+                            },
+                            {
+                                "type": "dumped_value",
+                                "key": "total_area"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "ignore": {
+            "match": [
+                "Британський квартал",
+                "Sofia Nova",
+                "НОВА АНГЛІЯ",
+                "Life Story",
+                "SvitloPark",
+                "Новосілки",
+                "Нові Теремки",
+                "Ракетна",
+                "Кришталеві Джерела",
+                "Вудлайн",
+                "ЖК Атлант",
+                "Svitlo Park",
+                "Медовий",
+                "Одеський бульвар",
+                "Orange City",
+                "Svitlo-Park",
+                "Sky Avenue",
+                "Заболотного", 
+                "Хрущівка",
+                "ЖК Авеню"
+            ]
+        },
+        "notify": {
+            "type": "telegram",
+            "channel": -1002605995351,
+            "template": "<b>💰 Ціна:</b> {price}$ ({price_per_meter} $/м²)\n<b>📐 Площа:</b> {total_area} м²\n<b>🧱 Поверх:</b> {floor} із {total_floors}\n<b>🛏 Кімнати:</b> {number_of_rooms}\n<b>🔥 Опалення:</b> {heating}\n<b>🔧 Стан:</b> {repair}\n<b>🏢 ЖК:</b> {apartmentComplex}\n\n<b>📌 Назва:</b>\n{title}\n\n<b>📝 Опис:</b>\n{description}\n\n<a href='{url}'>🔗 Перейти до оголошення</a>"
+        }
+    }
+]

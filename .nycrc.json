@@ -1,0 +1,21 @@
+{
+    "include": [
+        "src"
+    ],
+    "exclude": [],
+    "reporter": [
+        "html",
+        "lcovonly"
+    ],
+    "require": [
+        "@babel/register",
+        "@babel/polyfill"
+    ],
+    "report-dir": "./reports/coverage",
+    "temp-dir": "./reports/coverage",
+    "lines": 65,
+    "statements": 65,
+    "functions": 55,
+    "branches": 60,
+    "check-coverage": true
+}

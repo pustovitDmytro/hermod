@@ -1,0 +1,11 @@
+.*
+*
+!lib/*
+!lib/**/*
+!README.md
+!package.json
+!package-lock.json
+!LICENSE.md
+!CHANGELOG.md
+
+!templates/*
