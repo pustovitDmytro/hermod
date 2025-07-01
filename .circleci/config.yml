@@ -1,14 +1,14 @@
 defaults: &defaults
   resource_class: small
   docker:
-    - image: circleci/node:20
+    - image: cimg/node:20
 cache-defaults: &cache-defaults
   keys:
     - -{{ checksum "package-lock.json" }}
 tests: &tests
   resource_class: small
   docker:
-    - image: circleci/node:20
+    - image: cimg/node:20
     - image: circleci/redis
 parameters:
   skip-coveralls:
@@ -168,10 +168,11 @@ jobs:
                 name: Create Release
                 command: if [ -z ${CIRCLE_SKIP_DEPLOY+x} ]; then npm run semantic-release;else echo 'job skipped';fi
   server-update:
+    machine: true
     environment:
-      - SSH_USER: "ubuntu"
-      - SSH_HOST: "34.250.92.118"
-      - DEPLOY_PATH: "/home/ubuntu"
+      SSH_USER: "ubuntu"
+      SSH_HOST: "34.250.92.118"
+      DEPLOY_PATH: "/home/ubuntu"
     steps:
       - checkout
       - run:
@@ -184,7 +185,7 @@ jobs:
       - run:
           name: SSH and Deploy Docker Compose
           command: |
-            ssh "$SSH_USER@$SSH_HOST" << 'EOF'
+            ssh "$SSH_USER@$SSH_HOST" \<< 'EOF'
               cd $DEPLOY_PATH
               git pull origin main
               docker compose -f hermod.docker-compose.yml up -d --pull always
