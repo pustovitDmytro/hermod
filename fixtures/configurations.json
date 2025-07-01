@@ -47,15 +47,15 @@
                 "key": "params.zkh.value.label"
             },
             "floor": {
-                "type": "string",
+                "type": "number",
                 "key": "params.floor.value.label"
             },
             "total_floors": {
-                "type": "string",
+                "type": "number",
                 "key": "params.total_floors.value.label"
             },
             "number_of_rooms": {
-                "type": "string",
+                "type": "number",
                 "key": "params.number_of_rooms_string.value.label"
             },
             "heating": {
