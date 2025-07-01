@@ -15,12 +15,11 @@ const doc = `Usage:
 async function testRealEstateRequest() {
     await realEstateRequest({
         data : {
-            ...configs[1],
+            ...configs[0],
             notify : null
         }
     });
 }
-
 
 async function run(opts) {
     if (opts.realEstateRequest) {

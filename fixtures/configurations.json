@@ -221,14 +221,134 @@
         },
         "ignore": {
             "match": [
-                "половину",
-                "частину"
+                "половин",
+                "частин"
             ]
         },
         "notify": {
             "type": "telegram",
             "channel": -1002891755804,
-            "template": "<b>💰 Ціна:</b> {price}$ \n<b>📐 Загальна площа будинку:</b> {total_area} м² \n<b>🏠 Тип власності:</b> {property_type} \n<b>🌳 Площа земельної ділянки:</b> {land_area} соток \n<b>🛏 Кількість кімнат:</b> {number_of_rooms} \n<b>🏢 Поверхів у будинку:</b> {total_floors} \n<b>📌 Назва:</b> \n{title\n<b>📝 Опис:</b> \n{description\n<a href='{url}'>🔗 Перейти до оголошення</a>"
+            "template": "<b>💰 Ціна:</b> {price}$ \n<b>📐 Площа будинку:</b> {total_area} м² ({price_per_house_meter}$/m2) \n<b>🏠 Тип власності:</b> {property_type} \n<b>🌳 Площа ділянки:</b> {land_area} ({price_per_land_meter}$/m2) \n<b>🛏 Кількість кімнат:</b> {number_of_rooms} \n<b>🏢 Поверхів у будинку:</b> {total_floors} \n<b>📌 Назва:</b> \n{title}\n<b>📝 Опис:</b> \n{description}\n<a href='{url}'>🔗 Перейти до оголошення</a>"
+        }
+    },
+    {
+        "id": "1fed4463-e4a9-4935-a591-52ca7aec5a17",
+        "parser": "olx",
+        "type": "real_estate",
+        "filters": {
+            "category_id": "206",
+            "region_id": "25",
+            "city_id": "268",
+            "currency": "USD",
+            "filter_float_price:from": "50000",
+            "filter_float_price:to": "120000",
+            "query": [
+                "ширма",
+                "цимбалів яр",
+                "деміївка",
+                "деміївська",
+                "голосіївська",
+                "демеевка",
+                "демеевская",
+                "голосеевская",
+                "голосієво",
+                "голосеево"
+            ]
+        },
+        "attributes": {
+            "id": {
+                "type": "string",
+                "key": "id"
+            },
+            "url": {
+                "type": "string",
+                "key": "url"
+            },
+            "title": {
+                "type": "string",
+                "key": "title"
+            },
+            "description": {
+                "type": "string",
+                "key": "description"
+            },
+            "total_floors": {
+                "type": "number",
+                "key": "params.total_floors.value.label"
+            },
+            "number_of_rooms": {
+                "type": "number",
+                "key": "params.number_of_rooms.value.label"
+            },
+            "property_type": {
+                "type": "string",
+                "key": "params.property_type_houses.value.label"
+            },
+            "land_area": {
+                "type": "number",
+                "key": "params.land_area.value.key"
+            },
+            "total_area": {
+                "type": "number",
+                "key": "params.total_area.value.key"
+            },
+            "price": {
+                "type": "number",
+                "key": "params.price.value.value"
+            },
+            "price_per_house_meter": {
+                "type": "function",
+                "operator": "round",
+                "arguments": [
+                    {
+                        "type": "function",
+                        "operator": "divide",
+                        "arguments": [
+                            {
+                                "type": "dumped_value",
+                                "key": "price"
+                            },
+                            {
+                                "type": "dumped_value",
+                                "key": "total_area"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "price_per_land_meter": {
+                "type": "function",
+                "operator": "round",
+                "arguments": [
+                    {
+                        "type": "function",
+                        "operator": "divide",
+                        "arguments": [
+                            {
+                                "type": "dumped_value",
+                                "key": "price"
+                            },
+                            {
+                                "type": "dumped_value",
+                                "key": "land_area"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "ignore": {
+            "match": [
+                "половин",
+                "частин",
+                "Осокорк",
+                "Теремк"
+            ]
+        },
+        "notify": {
+            "type": "telegram",
+            "channel": -1002605995351,
+            "template": "<b>💰 Ціна:</b> {price}$ \n<b>📐 Площа будинку:</b> {total_area} м² ({price_per_house_meter}$/m2) \n<b>🏠 Тип власності:</b> {property_type} \n<b>🌳 Площа ділянки:</b> {land_area} ({price_per_land_meter}$/m2) \n<b>🛏 Кількість кімнат:</b> {number_of_rooms} \n<b>🏢 Поверхів у будинку:</b> {total_floors} \n<b>📌 Назва:</b> \n{title}\n<b>📝 Опис:</b> \n{description}\n<a href='{url}'>🔗 Перейти до оголошення</a>"
         }
     }
 ]

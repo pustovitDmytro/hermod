@@ -10,11 +10,8 @@ const PARSERS = {
 
 function filterByIgnoreList(ignoreNormalized) {
     return item => {
-        const title = (item.title || '').toLowerCase();
-        const description = (item.description || '').toLowerCase();
-
         return !ignoreNormalized.some(term =>
-            title.includes(term) || description.includes(term));
+            item._fulltext.includes(term));
     };
 }
 

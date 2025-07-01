@@ -184,7 +184,7 @@ jobs:
       - run:
           name: SSH and Deploy Docker Compose
           command: |
-            ssh "$SSH_USER@$SSH_HOST" << 'EOF'
+            ssh "$SSH_USER@$SSH_HOST" \<< 'EOF'
               cd $DEPLOY_PATH
               git pull origin main
               docker compose -f hermod.docker-compose.yml up -d --pull always

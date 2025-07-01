@@ -156,11 +156,16 @@ export function dump(item, config) {
         })
     };
 
-    const result = {};
+    const result = {
+        _fulltext : ''
+    };
 
     for (const [ key, expr ] of topologicalSortConfig(config)) {
         result[key] = evaluateNode(expr, context, result);
+        result._fulltext = `${result._fulltext} ${result[key]}`;
     }
+
+    result._fulltext = result._fulltext.toLowerCase();
 
     return result;
 }
