@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/pustovitDmytro/hermod/compare/v1.1.0...v1.1.1) (2025-07-01)
+
+
+### Fix
+
+* fixes house template ([3c1b681](https://github.com/pustovitDmytro/hermod/commit/3c1b681610c203435c27f4d067d48711642e23ca))
+
 # [1.1.0](https://github.com/pustovitDmytro/hermod/compare/v1.0.1...v1.1.0) (2025-07-01)
 
 
