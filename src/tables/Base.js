@@ -8,12 +8,8 @@ export default class SurrealDBTable {
         this.db = db;
     }
 
-    getThing(id) {
-        return `${this.table}:${id}`;
-    }
-
     async findOne(id) {
-        const [ res ] = await this.db.select(this.getThing(id));
+        const [ res ] = await this.db.select(id);
 
         return res;
     }
@@ -52,13 +48,13 @@ export default class SurrealDBTable {
     }
 
     async update(id, data) {
-        const res = await this.db.merge(this.getThing(id), data);
+        const res = await this.db.merge(this.table, id, data);
 
         return res[0];
     }
 
     async delete(id) {
-        return await this.db.delete(this.getThing(id));
+        return await this.db.delete(this.table, id);
     }
 
     async sync(items) {

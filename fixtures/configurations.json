@@ -122,7 +122,7 @@
         "notify": {
             "type": "telegram",
             "channel": -1002605995351,
-            "template": "<b>💰 Ціна:</b> {price}$ ({price_per_meter} $/м²)\n<b>📐 Площа:</b> {total_area} м²\n<b>🧱 Поверх:</b> {floor} із {total_floors}\n<b>🛏 Кімнати:</b> {number_of_rooms}\n<b>🔥 Опалення:</b> {heating}\n<b>🔧 Стан:</b> {repair}\n<b>🏢 ЖК:</b> {apartmentComplex}\n\n<b>📌 Назва:</b>\n{title}\n\n<b>📝 Опис:</b>\n{description}\n\n<a href='{url}'>🔗 Перейти до оголошення</a>"
+            "template": "<b>💰 Ціна:</b> {price}$ ({price_per_meter}$/м²)\n<b>📐 Площа:</b> {total_area} м²\n<b>🧱 Поверх:</b> {floor} із {total_floors}\n<b>🛏 Кімнати:</b> {number_of_rooms}\n<b>🔥 Опалення:</b> {heating}\n<b>🔧 Стан:</b> {repair}\n<b>🏢 ЖК:</b> {apartmentComplex}\n\n<b>📌 Назва:</b>\n{title}\n\n<b>📝 Опис:</b>\n{description}\n\n<a href='{url}'>🔗 Перейти до оголошення</a>"
         }
     },
     {

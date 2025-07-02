@@ -1,6 +1,6 @@
 // import Surreal from 'surrealdb.js';
 
-import { Surreal } from 'surrealdb';
+import { Surreal, RecordId } from 'surrealdb';
 import config from './etc/config';
 
 class SurrealDB {
@@ -49,16 +49,16 @@ class SurrealDB {
         return this.surreal.create(table, data);
     }
 
-    async merge(thing, data) {
+    async merge(table, id, data) {
         await this.connect();
 
-        return this.surreal.merge(thing, data);
+        return this.surreal.merge(new RecordId(table, id), data);
     }
 
-    async delete(thing) {
+    async delete(table, id) {
         await this.connect();
 
-        return this.surreal.delete(thing);
+        return this.surreal.delete(new RecordId(table, id));
     }
 }
 
