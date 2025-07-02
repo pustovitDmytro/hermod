@@ -178,13 +178,13 @@ jobs:
           name: Setup SSH access
           command: |
             mkdir -p ~/.ssh
-            echo "$SSH_PRIVATE_KEY" | tr -d '\r' | sed 's/\\n/\n/g' | tee ~/.ssh/id_rsa > /dev/null
-            chmod 400 ~/.ssh/id_rsa
+            echo "$SSH_PRIVATE_KEY" | tr -d '\r' | sed 's/\\n/\n/g' | tee ~/.ssh/circle.pem > /dev/null
+            chmod 400 ~/.ssh/circle.pem
             ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts
       - run:
           name: SSH and Deploy Docker Compose
           command: |
-            ssh "$SSH_USER@$SSH_HOST" \<< 'EOF'
+            ssh "$SSH_USER@$SSH_HOST" -i ~/.ssh/circle.pem \<< 'EOF'
               cd $DEPLOY_PATH
               git pull origin main
               docker compose -f hermod.docker-compose.yml up -d --pull always
