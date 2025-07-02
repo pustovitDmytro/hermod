@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/pustovitDmytro/hermod/compare/v1.1.1...v1.1.2) (2025-07-02)
+
+
+### Fix
+
+* fixes base image name ([19fba41](https://github.com/pustovitDmytro/hermod/commit/19fba41999267d856a66b457a4d57a262c73aeaf))
+
 ## [1.1.1](https://github.com/pustovitDmytro/hermod/compare/v1.1.0...v1.1.1) (2025-07-01)
 
 
