@@ -9,19 +9,39 @@ import { docoptRunner } from './utils';
 
 const doc = `Usage:
     db.js push <table>
+    db.js get <table>
     db.js -h | --help
 
     Options:
-        sync fixtures
+        push    push fixtures to db
+        get     show db data
         <table> table to sync
         -h  --help Test workers
 `;
 
-async function syncDB(table) {
-    if (table.includes('config')) await Configuration.sync(configurations);
-    if (table.includes('watch')) await Watched.sync(watched);
+function getModel(table) {
+    if (table.includes('config')) return Configuration;
+    if (table.includes('watch')) return Watched;
 }
 
+function getFixtures(table) {
+    if (table.includes('config')) return configurations;
+    if (table.includes('watch')) return watched;
+}
+
+async function syncDB(table) {
+    const model = getModel(table);
+
+    await model.sync(getFixtures(table));
+}
+
+
+async function getDB(table) {
+    const model = getModel(table);
+    const data = await model.findAll();
+
+    console.log(data);
+}
 
 async function run(opts) {
     await db.connect();
@@ -29,6 +49,10 @@ async function run(opts) {
 
     if (opts.push) {
         await syncDB(opts['<table>']);
+    }
+
+    if (opts.get) {
+        await getDB(opts['<table>']);
     }
 
     await db.close();

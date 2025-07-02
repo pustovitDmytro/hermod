@@ -21,8 +21,8 @@
                 },
                 {
                     "files": ["docker/Admin.dockerfile", "docker/Worker.dockerfile"],
-                    "from": "FROM pustovitdmytro/ianus-base:.*",
-                    "to": "FROM pustovitdmytro/ianus-base:${nextRelease.version}"
+                    "from": "FROM pustovitdmytro/hermod-base:.*",
+                    "to": "FROM pustovitdmytro/hermod-base:${nextRelease.version}"
                 }
               ]
             }
