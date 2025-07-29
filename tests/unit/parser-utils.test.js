@@ -13,7 +13,6 @@ test('dump olx data for flat config', async function () {
     for (const raw of olxRaw) {
         const dumped = dump(raw, configs[0].attributes);
 
-        console.log('dumped.price_per_meter:', dumped.price_per_meter, dumped);
         assert.exists(dumped.price_per_meter, JSON.stringify(raw));
         break;
     }

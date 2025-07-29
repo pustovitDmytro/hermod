@@ -116,13 +116,19 @@
                 "Sky Avenue",
                 "Заболотного", 
                 "Хрущівка",
-                "ЖК Авеню"
+                "ЖК Авеню",
+                "Під чистову обробку",
+                "Після будівельників"
+            ],
+            "conditions": [
+                "$price_per_meter < 1850",
+                "$total_floors - $floor > 0"
             ]
         },
         "notify": {
             "type": "telegram",
             "channel": -1002605995351,
-            "template": "<b>💰 Ціна:</b> {price}$ ({price_per_meter}$/м²)\n<b>📐 Площа:</b> {total_area} м²\n<b>🧱 Поверх:</b> {floor} із {total_floors}\n<b>🛏 Кімнати:</b> {number_of_rooms}\n<b>🔥 Опалення:</b> {heating}\n<b>🔧 Стан:</b> {repair}\n<b>🏢 ЖК:</b> {apartmentComplex}\n\n<b>📌 Назва:</b>\n{title}\n\n<b>📝 Опис:</b>\n{description}\n\n<a href='{url}'>🔗 Перейти до оголошення</a>"
+            "template": "Голосієво\n<b>💰 Ціна:</b> {price}$ ({price_per_meter}$/м²)\n<b>📐 Площа:</b> {total_area} м²\n<b>🧱 Поверх:</b> {floor} із {total_floors}\n<b>🛏 Кімнати:</b> {number_of_rooms}\n<b>🔥 Опалення:</b> {heating}\n<b>🔧 Стан:</b> {repair}\n<b>🏢 ЖК:</b> {apartmentComplex}\n\n<b>📌 Назвава:</b>\n{title}\n\n<b>📝 Опис:</b>\n{description}\n\n<a href='{url}'>🔗 Перейти до оголошення</a>"
         }
     },
     {
@@ -351,6 +357,139 @@
             "type": "telegram",
             "channel": -1002605995351,
             "template": "<b>💰 Ціна:</b> {price}$ \n<b>📐 Площа будинку:</b> {total_area} м² ({price_per_house_meter}$/m2) \n<b>🏠 Тип власності:</b> {property_type} \n<b>🌳 Площа ділянки:</b> {land_area} ({price_per_land_meter}$/m2) \n<b>🛏 Кількість кімнат:</b> {number_of_rooms} \n<b>🏢 Поверхів у будинку:</b> {total_floors} \n<b>📌 Назва:</b> \n{title}\n<b>📝 Опис:</b> \n{description}\n<a href='{url}'>🔗 Перейти до оголошення</a>"
+        }
+    },
+    {
+        "id": "340f46b6-e42d-4282-90b6-c3a71d653ab1",
+        "parser": "olx",
+        "type": "real_estate",
+        "filters": {
+            "category_id": "1758",
+            "region_id": "25",
+            "city_id": "268",
+            "currency": "USD",
+            "filter_float_floor:from": "2",
+            "filter_float_price:from": "30000",
+            "filter_float_price:to": "80000",
+            "filter_float_total_area:from": "30",
+            "filter_float_total_floors:from": "6",
+            "query": [
+                "тараса шевченка",
+                "контрактова",
+                "поштова",
+                "золоті ворота",
+                "університет",
+                "площа українських героїв",
+                "палац спорту",
+                "палац україна",
+                "олімпійська",
+                "велика васильківська",
+                "либідська",
+                "саксаганського",
+                "жилянська",
+                "антоновича"
+            ]
+        },
+        "attributes": {
+            "id": {
+                "type": "string",
+                "key": "id"
+            },
+            "url": {
+                "type": "string",
+                "key": "url"
+            },
+            "title": {
+                "type": "string",
+                "key": "title"
+            },
+            "description": {
+                "type": "string",
+                "key": "description"
+            },
+            "apartmentComplex": {
+                "type": "string",
+                "key": "params.zkh.value.label"
+            },
+            "floor": {
+                "type": "number",
+                "key": "params.floor.value.label"
+            },
+            "total_floors": {
+                "type": "number",
+                "key": "params.total_floors.value.label"
+            },
+            "number_of_rooms": {
+                "type": "number",
+                "key": "params.number_of_rooms_string.value.label"
+            },
+            "heating": {
+                "type": "string",
+                "key": "params.heating.value.label"
+            },
+            "repair": {
+                "type": "string",
+                "key": "params.repair.value.label"
+            },
+            "total_area": {
+                "type": "number",
+                "key": "params.total_area.value.key"
+            },
+            "price": {
+                "type": "number",
+                "key": "params.price.value.value"
+            },
+            "price_per_meter": {
+                "type": "function",
+                "operator": "round",
+                "arguments": [
+                    {
+                        "type": "function",
+                        "operator": "divide",
+                        "arguments": [
+                            {
+                                "type": "dumped_value",
+                                "key": "price"
+                            },
+                            {
+                                "type": "dumped_value",
+                                "key": "total_area"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "ignore": {
+            "match": [
+                "Хрущівка",
+                "Севастопольській площі",
+                "Навігатор",
+                "Мінська",
+                "Під чистову обробку",
+                "Після будівельників",
+                "Автозаводська",
+                "Полярна",
+                "Podil Plaza",
+                "Виноградар",
+                "Куренівка",
+                "Lucky Land",
+                "Позняки",
+                "Троєщина",
+                "метро Харківська",
+                "Борщагівка",
+                "Дарниця",
+                "Ракетна"
+            ],
+            "conditions": [
+                "$price_per_meter < 1850",
+                "$total_floors - $floor > 0"
+            ]
+        },
+        "notify": {
+            "type": "telegram",
+            "channel": -1002605995351,
+            "template": "Центр\n<b>💰 Ціна:</b> {price}$ ({price_per_meter}$/м²)\n<b>📐 Площа:</b> {total_area} м²\n<b>🧱 Поверх:</b> {floor} із {total_floors}\n<b>🛏 Кімнати:</b> {number_of_rooms}\n<b>🔧 Стан:</b> {repair}\n<b>🏢 ЖК:</b> {apartmentComplex}\n\n<b>📌 Назва:</b>\n{title}\n\n<b>📝 Опис:</b>\n{description}\n\n<a href='{url}'>🔗 Перейти до оголошення</a>"
         }
     }
 ]

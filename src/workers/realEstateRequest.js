@@ -8,6 +8,21 @@ const PARSERS = {
     olx : OlxParser
 };
 
+export function filterByCondition(condition) {
+    const expression = condition.replace(/\$(\w+)/g, 'item["$1"]');
+
+    return item => {
+        try {
+            // eslint-disable-next-line no-new-func
+            return new Function('item', `return (${expression});`)(item);
+        } catch (error) {
+            console.error('Error evaluating condition:', condition, error);
+
+            return false;
+        }
+    };
+}
+
 function filterByIgnoreList(ignoreNormalized) {
     return item => {
         return !ignoreNormalized.some(term =>
@@ -37,12 +52,18 @@ export default async function (job) {
     let filteredList = list;
 
     if (config.ignore) {
-        const { match } = config.ignore;
+        const { match, conditions } = config.ignore;
 
         if (match) {
             const ignoreNormalized = match.map(str => str.toLowerCase());
 
             filteredList = filteredList.filter(filterByIgnoreList(ignoreNormalized));
+        }
+
+        if (conditions) {
+            for (const condition of conditions) {
+                filteredList = filteredList.filter(filterByCondition(condition));
+            }
         }
     }
 
