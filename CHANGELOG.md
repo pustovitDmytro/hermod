@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/pustovitDmytro/hermod/compare/v1.1.3...v1.2.0) (2025-07-29)
+
+
+### New
+
+* adds conditions ([d4f8057](https://github.com/pustovitDmytro/hermod/commit/d4f8057545f925e122f822ec320c14c1334d170b))
+
 ## [1.1.3](https://github.com/pustovitDmytro/hermod/compare/v1.1.2...v1.1.3) (2025-07-02)
 
 
