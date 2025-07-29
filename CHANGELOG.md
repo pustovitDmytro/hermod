@@ -1,3 +1,15 @@
+## [1.1.3](https://github.com/pustovitDmytro/hermod/compare/v1.1.2...v1.1.3) (2025-07-02)
+
+
+### Chore
+
+* remove old files ([b66a521](https://github.com/pustovitDmytro/hermod/commit/b66a521107040a8c1c1fef29eb77fe0e3f0d706e))
+* use custom ssh pem file in ci ([cd4c357](https://github.com/pustovitDmytro/hermod/commit/cd4c357a32daf69b76b64b24791c9af44b6eb9e7))
+
+### Fix
+
+* fixes db merge ([65be675](https://github.com/pustovitDmytro/hermod/commit/65be675bef2d6a63529241a8e0b21b42d5eef8d8))
+
 ## [1.1.2](https://github.com/pustovitDmytro/hermod/compare/v1.1.1...v1.1.2) (2025-07-02)
 
 

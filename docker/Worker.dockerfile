@@ -1,4 +1,4 @@
-FROM pustovitdmytro/hermod-base:1.1.2
+FROM pustovitdmytro/hermod-base:1.1.3
 
 WORKDIR /app
 
