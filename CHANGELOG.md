@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/pustovitDmytro/hermod/compare/v1.2.0...v1.2.1) (2025-07-31)
+
+
+### Fix
+
+* dont send undefined to fulltext ([d1975b8](https://github.com/pustovitDmytro/hermod/commit/d1975b811020e9d498b144bb515f5ded4a4f6e90))
+
 # [1.2.0](https://github.com/pustovitDmytro/hermod/compare/v1.1.3...v1.2.0) (2025-07-29)
 
 
