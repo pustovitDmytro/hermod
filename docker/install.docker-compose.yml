@@ -9,24 +9,31 @@ services:
     command: redis-server --appendonly yes
     volumes:
       - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 2s
+      timeout: 1s
+      retries: 10
 
   hermod-admin:
-    image: pustovitdmytro/hermod-admin:0.0.1
+    image: pustovitdmytro/hermod-admin:1
     container_name: hermod-admin
     ports:
-      - "8010:5001"
+      - "9001:8010"
     env_file:
       - ./hermod.env
     depends_on:
-      - redis
+      redis:
+        condition: service_healthy
 
   hermod-worker:
-    image: pustovitdmytro/hermod-worker:0.0.1
+    image: pustovitdmytro/hermod-worker:1
     container_name: hermod-worker
     env_file:
       - ./hermod.env
     depends_on:
-      - redis
+      redis:
+        condition: service_healthy
 
 volumes:
   redis_data:

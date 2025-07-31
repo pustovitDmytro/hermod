@@ -162,7 +162,9 @@ export function dump(item, config) {
 
     for (const [ key, expr ] of topologicalSortConfig(config)) {
         result[key] = evaluateNode(expr, context, result);
-        result._fulltext = `${result._fulltext} ${result[key]}`;
+        if (result[key]) {
+            result._fulltext = `${result._fulltext} ${result[key]}`;
+        }
     }
 
     result._fulltext = result._fulltext.toLowerCase();
