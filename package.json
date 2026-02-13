@@ -84,7 +84,7 @@
     "winston-array-transport": "^1.1.10"
   },
   "dependencies": {
-    "@bull-board/api": "4.2.2",
+    "@bull-board/api": "4.12.2",
     "@bull-board/express": "4.2.2",
     "base-api-client": "1.5.9",
     "bull": "4.8.5",
